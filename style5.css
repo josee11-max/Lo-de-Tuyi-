@@ -1,0 +1,385 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuentes y base */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f6f1f3;
+    color: #111;
+    line-height: 1.6;
+}
+
+/* Colores personalizados */
+:root {
+    --rosa: #f2b6d0;
+    --negro: #000000;
+    --gris-suave: #f6f1f3;
+    --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado */
+header {
+    background-color: var(--negro);
+    padding: 20px 0;
+    text-align: center;
+}
+
+header img.logo {
+    height: 120px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+nav ul li a {
+    color: var(--rosa);
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: white;
+}
+
+/* Hero principal */
+.hero {
+    background: linear-gradient(135deg, #f2b6d0 10%, #f6f1f3 100%);
+    padding: 100px 20px;
+    text-align: center;
+    color: var(--negro);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+
+/* Botón principal (hero) */
+.btn {
+    background-color: var(--negro);
+    color: var(--rosa);
+    padding: 15px 30px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #333;
+}
+
+/* Estilo del buscador */
+.buscador-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.buscador-container input#buscador {
+    padding: 10px 15px;
+    width: 60%;
+    max-width: 400px;
+    border: 2px solid var(--rosa);
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.buscador-container input#buscador:focus {
+    border-color: var(--negro);
+}
+
+.buscador-container button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--negro);
+    color: var(--rosa);
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0 20px 20px 0;
+}
+
+.buscador-container button:hover {
+    background-color: #333;
+}
+
+/* Contenedor de productos */
+.contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 0;
+    padding: 0 20px;
+}
+
+/* Producto individual */
+.producto {
+    background-color: #fff;
+    border: 1px solid var(--gris-suave);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--sombra);
+    overflow: hidden;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--gris-suave);
+}
+
+.producto p {
+    padding: 10px;
+    color: var(--negro);
+}
+
+.producto button {
+    background-color: var(--negro);
+    color: var(--rosa);
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.producto button:hover {
+    background-color: #333;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 10px var(--sombra);
+}
+
+/* Carrito de compras flotante */
+.carrito-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#toggle-carrito {
+    background-color: var(--rosa);
+    color: var(--negro);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px var(--sombra);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#toggle-carrito:hover {
+    background-color: #e0a4c0;
+    transform: scale(1.05);
+}
+
+.carrito-contenido {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    background-color: #fff;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--gris-suave);
+    border-radius: 10px;
+    box-shadow: 0 8px 10px var(--sombra);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carrito-flotante.mostrar .carrito-contenido {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.carrito-contenido ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    color: var(--negro);
+}
+
+.carrito-contenido p {
+    padding: 10px;
+    font-weight: bold;
+    border-top: 1px solid var(--gris-suave);
+}
+
+.carrito-contenido button {
+    background-color: var(--negro);
+    color: var(--rosa);
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carrito-contenido button:hover {
+    background-color: #333;
+}
+
+/* Estilo para elementos del carrito */
+.carrito-contenido ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    transition: opacity 0.5s ease;
+}
+
+button.eliminar {
+    background-color: var(--rosa);
+    color: var(--negro);
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.eliminar:hover {
+    background-color: #e0a4c0;
+    box-shadow: 0 4px 6px var(--sombra);
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+
+/* === Rasca y Gana: Modal de cupón centrado === */
+#cupon-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+#cupon-modal.visible {
+  opacity: 1; visibility: visible;
+}
+.cupon-contenido {
+  background: #fff;
+  padding: 30px;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+.cerrar-cupon {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cerrar-cupon:hover {
+  color: var(--rosa);
+}
+.cupon-contenido h2 {
+  margin-bottom: 10px;
+  color: var(--negro);
+}
+.cupon-contenido p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Tarjeta “rasca” */
+.tarjeta-rascar {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px dashed var(--rosa);
+  border-radius: 8px;
+  background: var(--gris-suave);
+  display: inline-block;
+  transition: filter 0.5s ease;
+}
+.tarjeta-rascar.blur {
+  filter: blur(6px);
+}
+
+/* Botón “Rascar” */
+#rascar-btn {
+  background-color: var(--negro);
+  color: var(--rosa);
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+#rascar-btn:hover:not(:disabled) {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+#rascar-btn:disabled {
+  background-color: #aaa;
+  cursor: default;
+}
+
+/* Botón “Canjear” tras rascar */
+#canjear-btn {
+  display: none;
+  margin-top: 15px;
+  background-color: var(--rosa);
+  color: var(--negro);
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+#canjear-btn:hover {
+  background-color: #e0a4c0;
+  transform: translateY(-2px);
+}
+
