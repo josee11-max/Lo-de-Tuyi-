@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Nosotros - Lo de Tuyi</title>
+  <link rel="stylesheet" href="style2.css" />
+  <link rel="stylesheet" href="responsive.css" />
+</head>
+<body>
+
+  <!-- Modo claro/oscuro automático y botón de cambio -->
+  <script>
+    const hora = new Date().getHours();
+    document.body.classList.add((hora >= 19 || hora < 6) ? 'modo-oscuro' : 'modo-claro');
+  </script>
+  <button id="toggle-tema" class="boton-tema" title="Cambiar tema">🌙 / ☀️</button>
+  <script>
+    const btnTema = document.getElementById('toggle-tema');
+    btnTema.addEventListener('click', () => {
+      const modo = document.body.classList.contains('modo-oscuro') ? 'modo-claro' : 'modo-oscuro';
+      document.body.classList.toggle('modo-oscuro');
+      document.body.classList.toggle('modo-claro');
+      localStorage.setItem('tema', modo);
+    });
+    const temaGuardado = localStorage.getItem('tema');
+    if (temaGuardado) {
+      document.body.classList.replace('modo-claro', temaGuardado);
+      document.body.classList.replace('modo-oscuro', temaGuardado);
+    }
+  </script>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/5493777684840" class="whatsapp" target="_blank" title="Chatear por WhatsApp">
+    <img src="imagenes/img-4.jpg" alt="WhatsApp" />
+  </a>
+
+  <!-- Header -->
+  <header class="scroll-fade">
+    <div class="container">
+      <a href="index.html"><img src="imagenes/logo-2.jpg" alt="Lo de Tuyi" class="logo"/></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="sobre-nosotros.html" class="activo">Sobre Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slider de imágenes -->
+  <section class="slider-container scroll-animado">
+    <div class="slider" id="slider">
+      <!-- Coloca tus imágenes aquí -->
+      <div class="slide"><img src="imagenes/nosotros-2.jpg" alt="Foto 2"></div>
+      <div class="slide"><img src="imagenes/nosotros-3.jpg" alt="Foto 3"></div>
+      <div class="slide"><img src="imagenes/nosotros-4.jpg" alt="Foto 3"></div>
+    </div>
+  </section>
+
+  <!-- Historia / Misión -->
+  <section class="historia scroll-left">
+    <div class="container">
+      <h2>Nuestra Historia</h2>
+      <p>
+        En Lo de Tuyi nacimos hace más de 10 años con la ilusión de brindar no solo productos,
+        sino también cercanía y confianza a cada cliente. Lo que comenzó como un pequeño
+        kiosco de barrio, hoy es un punto de encuentro para toda la comunidad de Esquina.
+      </p>
+      <p>
+        Cada paquete de golosinas, cada bebida y cada momento compartido en nuestra vereda
+        refleja el esfuerzo de Berta y Tuyi, quienes día a día trabajan con dedicación
+        para ofrecerte siempre lo mejor.
+      </p>
+    </div>
+  </section>
+
+  <section class="mision scroll-right">
+    <div class="container">
+      <h2>Nuestra Misión</h2>
+      <p>
+        Queremos que Lo de Tuyi sea tu kiosco de confianza: un espacio donde encuentres
+        variedad, calidad y calidez humana. Nos esforzamos por innovar en nuestros servicios,
+        y con este sitio web damos un paso más para acercarte ofertas, novedades y la
+        comodidad de pedir desde tu casa.
+      </p>
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section class="equipo scroll-fade">
+    <div class="container">
+      <h2>Conocé al Equipo</h2>
+      <div class="cards-equipo">
+        <div class="card">
+          <img src="imagenes/nosotros.jpeg" alt="Berta">
+          <h3>Berta</h3>
+          <p>Fundadora y corazón del kiosco, siempre dispuesta a recibirte con una sonrisa.</p>
+        </div>
+        <div class="card">
+          <img src="imagenes/nosotros.jpeg" alt="Tuyi">
+          <h3>Tuyi</h3>
+          <p>Apasionado por la atención al cliente y las buenas ofertas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="scroll-fade">
+    <div class="container">
+      <p>&copy; 2025 Lo de Tuyi | Esquina, Argentina</p>
+    </div>
+  </footer>
+
+  <!-- Intersection Observer Animations -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const animados = document.querySelectorAll('.scroll-animado, .scroll-fade, .scroll-left, .scroll-right');
+      const observer = new IntersectionObserver((entradas, obs) => {
+        entradas.forEach(entrada => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add('visible');
+            obs.unobserve(entrada.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      animados.forEach(el => observer.observe(el));
+    });
+  </script>
+
+  <!-- Slider automático -->
+  <script>
+    let idx = 0;
+    const slides = document.querySelectorAll('.slide');
+    function mostrarSlide() {
+      slides.forEach((s, i) => s.style.opacity = i === idx ? '1' : '0');
+      idx = (idx + 1) % slides.length;
+    }
+    setInterval(mostrarSlide, 4000);
+    window.onload = mostrarSlide;
+  </script>
+
+</body>
+</html>

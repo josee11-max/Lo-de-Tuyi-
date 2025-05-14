@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novedades - Lo de Tuyi</title>
+  <link rel="stylesheet" href="style6.css">
+  <link rel="stylesheet" href="responsive.css" />
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="index.html"><img src="imagenes/logo-2.jpg" alt="Lo de Tuyi" class="logo"></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="novedades.html" class="activo">Novedades</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero-novedades">
+  <div class="container">
+    <h1>Últimas Novedades</h1>
+    <p>Mantente al día con nuestras ofertas y novedades exclusivas.</p>
+  </div>
+</section>
+
+<section class="novedades-grid">
+  <div class="container">
+    <article class="novedad scroll-animado">
+      <img src="imagenes/hotsale.png" alt="Novedad 1">
+      <div class="info">
+        <h2>Oferta Especial de Verano</h2>
+        <p>Disfrutá de un 20% de descuento en bebidas frías durante todo el mes de enero.</p>
+        <a href="#" class="btn">Ver detalle</a>
+      </div>
+    </article>
+
+    <article class="novedad scroll-animado">
+      <img src="imagenes/promo-1.png" alt="Novedad 2">
+      <div class="info">
+        <h2>Lanzamiento de Nuevo Snack</h2>
+        <p>Probá nuestro snack crujiente sabor queso, recién llegado al kiosco.</p>
+        <a href="#" class="btn">Ver detalle</a>
+      </div>
+    </article>
+
+    <article class="novedad scroll-animado">
+      <img src="imagenes/hotsale.png" alt="Novedad 3">
+      <div class="info">
+        <h2>Combo Escolar</h2>
+        <p>Llevá útiles escolares + golosinas a precio promocional.</p>
+        <a href="#" class="btn">Ver detalle</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Lo de Tuyi | Esquina, Argentina</p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const animados = document.querySelectorAll('.scroll-animado');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    animados.forEach(el => observer.observe(el));
+  });
+</script>
+
+</body>
+</html>

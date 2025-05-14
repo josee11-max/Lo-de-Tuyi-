@@ -1,0 +1,173 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f6f1f3;
+  color: #111;
+  line-height: 1.6;
+}
+
+/* Colores */
+:root {
+  --rosa: #f2b6d0;
+  --rosa-claro: #fde8ef;
+  --negro: #000;
+  --gris-suave: #f6f1f3;
+  --sombra: rgba(0,0,0,0.1);
+}
+
+/* Modo claro / oscuro */
+body.modo-claro { background: #fff; color: #000; }
+body.modo-oscuro { background: #121212; color: #f2f2f2; }
+
+/* Botón de tema */
+.boton-tema {
+  position: fixed; top: 20px; right: 20px; z-index: 1000;
+  padding: 8px 12px; border: none; border-radius: 30px;
+  background: var(--rosa); color: var(--negro); cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: background 0.3s;
+}
+.boton-tema:hover { background: #e0a4c0; }
+
+/* WhatsApp */
+.whatsapp {
+  position: fixed; bottom: 25px; right: 25px; z-index: 1000;
+  width: 60px; height: 60px; border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3); overflow: hidden;
+  transition: transform 0.3s;
+}
+.whatsapp:hover { transform: scale(1.1); }
+.whatsapp img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Container */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Header y Nav */
+header {
+  background: var(--negro); padding: 20px 0; text-align: center;
+}
+header img.logo { height: 100px; }
+nav ul {
+  list-style: none; display: flex; justify-content: center; gap: 25px;
+  margin-top: 10px;
+}
+nav ul li a {
+  color: var(--rosa); font-weight: bold; font-size: 1.1rem;
+  transition: color 0.3s;
+}
+nav ul li a:hover,
+nav ul li a.activo { color: #fff; }
+
+/* Scroll animations */
+.scroll-animado, .scroll-fade, .scroll-left, .scroll-right {
+  opacity: 0; transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.scroll-left { transform: translateX(-50px); }
+.scroll-right { transform: translateX(50px); }
+.scroll-fade { transform: none; }
+.visible {
+  opacity: 1; transform: translate(0);
+}
+
+/* Slider */
+.slider-container {
+  position: relative; overflow: hidden; margin: 40px 0;
+  background: var(--rosa-claro);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px var(--sombra);
+}
+.slider {
+  position: relative; height: 300px;
+}
+.slide {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide img {
+  width: 100%; height: 100%;
+  object-fit: contain; /* Ajusta la imagen completa */
+  padding: 10px;       /* espacio para que no toque bordes */
+}
+
+/* Secciones */
+section {
+  padding: 60px 0;
+}
+section:nth-of-type(even) {
+  background: var(--gris-suave);
+}
+section:nth-of-type(odd) {
+  background: #fff;
+}
+
+/* Historia y Misión */
+.historia h2, .mision h2, .equipo h2 {
+  font-size: 2rem; color: var(--negro); margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+.historia h2::after, .mision h2::after, .equipo h2::after {
+  content: '';
+  width: 60px; height: 4px;
+  background: var(--rosa);
+  display: block; margin: 8px auto 0;
+}
+.historia p, .mision p {
+  max-width: 800px; margin: 0 auto 20px; font-size: 1rem; line-height: 1.5;
+}
+
+/* Equipo */
+.cards-equipo {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+}
+.card {
+  background: #fff; border-radius: 10px; box-shadow: 0 4px 6px var(--sombra);
+  overflow: hidden; width: 260px; text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: var(--rosa-claro);
+}
+.card img {
+  width: 100%; height: auto;
+  object-fit: contain; /* muestra imagen completa */
+  padding: 15px;
+}
+.card h3 {
+  margin: 15px 0 5px; font-size: 1.2rem; color: var(--negro);
+}
+.card p {
+  padding: 0 15px 20px; font-size: 0.9rem; color: #444;
+}
+.card:hover {
+  transform: translateY(-5px); box-shadow: 0 8px 12px var(--sombra);
+}
+
+/* Footer */
+footer {
+  background: var(--negro); color: #fff; text-align: center; padding: 20px 0;
+}
+
+
+/* === Responsive Mobile-First Styles === */
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  header img.logo { height: 80px; }
+  nav ul { flex-direction: column; gap: 10px; }
+  .contenedor-productos { flex-direction: column; padding: 0; }
+  .producto { width: 100%; margin-bottom: 1rem; }
+  .carrito-contenido { width: 90vw; max-height: 60vh; }
+  button, .btn { padding: 12px 20px; font-size: 1rem; }
+}
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .contenedor-productos { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+}
+/* Desktop */
+@media (min-width: 1025px) {
+  .contenedor-productos { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+}
